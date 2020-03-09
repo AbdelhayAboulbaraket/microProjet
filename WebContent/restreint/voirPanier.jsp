@@ -15,11 +15,11 @@
     <th>Code Article</th>
     <th>Designation</th>
     <th>Prix</th>
-    <th>Stock</th>
+    <th>Quantite</th>
     <th></th>
   </tr>
 
-<c:forEach var="item" items="${utilisateur.panier}">
+<c:forEach var="item" items="${utilisateur2.panier}">
 	<tr>
  		<tr><td>${item.article.codeArticle}</td>
  		<td>${item.article.designation}</td>

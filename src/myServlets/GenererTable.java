@@ -50,7 +50,7 @@ public class GenererTable extends HttpServlet {
 			session.setAttribute("taListe", taListe);
 			request.setAttribute("maListe", maListe);
 			
-			RequestDispatcher view=request.getRequestDispatcher("connexionReussite.jsp");
+			RequestDispatcher view=request.getRequestDispatcher("/restreint/afficherCatalogue.jsp");
 			view.forward(request, response);
 			}
 		

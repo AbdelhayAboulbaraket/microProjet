@@ -14,40 +14,7 @@
 <p style="display:inline;"> Bonjour mr ${sessionScope.utilisateur.nom} ${sessionScope.utilisateur.prenom} </p>
 <p style="display:inline; "align="right"><a href="voirPanier.jsp">Voir votre panier</a>.</p>
 
-<form action="GenererTable" method="GET">
-<label> Categorie:</label>
-<select name="categorie">
-<c:forEach var="name"  items="${sessionScope['taListe']}" >
-          <option value="${name}" <c:if test="${name == sessionScope.selected}">selected</c:if>> ${name} </option>
-</c:forEach>
-</select>
-<input type="submit" value="ok" />
-</form>
-
-<c:if test="${!empty maListe}">
-<table>
-  <tr>
-    <th>Code Article</th>
-    <th>Designation</th>
-    <th>Prix</th>
-    <th>Stock</th>
-    <th></th>
-  </tr>
-
-<c:forEach var="item" items="${maListe}">
-	<tr>
- 		<tr><td><a href="GenererArticle?param=${item.codeArticle}">${item.codeArticle}</a></td>
- 		<td>${item.designation}</td>
- 		<td>${item.prix}</td>
- 		<td>${item.stock}</td>
- 		<td>
- 		<a href="GenererArticle?param=${item.codeArticle}">Ajouter au panier </a>
- 		</td>
-</tr>
-</c:forEach>
-</table>
-</c:if>
-
+<a href="GenererTable"> Consulter catalogue.</a>
 
 </body>
 </html>

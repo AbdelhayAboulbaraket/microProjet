@@ -10,11 +10,13 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <filter>
-	<filter-name>RestrictionFilter</filter-name>
-	<filter-class>filtres.RestrictionFilter</filter-class>
-</filter>
-<filter-mapping>
-	<filter-name>RestrictionFilter</filter-name>
-	<url-pattern>/restreint/*</url-pattern>
-</filter-mapping>
+    <filter-name>RestrictionFilter</filter-name>
+    <filter-class>filtres.RestrictionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>RestrictionFilter</filter-name>
+    <url-pattern>/restreint/*</url-pattern>
+    <url-pattern>/myServlets/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>

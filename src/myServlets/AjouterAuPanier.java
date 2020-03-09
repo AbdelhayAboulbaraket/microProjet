@@ -47,8 +47,8 @@ public class AjouterAuPanier extends HttpServlet {
 		client.ajouterAuPanier(new Panier(article,quantite));
 		
 		
-		session.setAttribute("utilisateur", client);
-		RequestDispatcher view=request.getRequestDispatcher("connexionReussite.jsp");
+		session.setAttribute("utilisateur2", client);
+		RequestDispatcher view=request.getRequestDispatcher("/restreint/afficherCatalogue.jsp");
 		view.forward(request, response);
 		
 	}

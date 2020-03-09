@@ -58,6 +58,11 @@ public class ConfirmerConnexion extends HttpServlet {
 			RequestDispatcher view=request.getRequestDispatcher("connexionReussite.jsp");
 			view.forward(request, response);
 		}
+		else
+		{	
+			RequestDispatcher view=request.getRequestDispatcher("identification.jsp");
+			view.forward(request, response);
+		}
 	}
 	
 

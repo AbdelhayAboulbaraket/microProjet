@@ -38,7 +38,7 @@ public class GenererArticle extends HttpServlet {
 		Article article=articleDao.find(Integer.valueOf(request.getParameter("param")));
 		request.setAttribute("article", article);
 		
-		RequestDispatcher view=request.getRequestDispatcher("article.jsp");
+		RequestDispatcher view=request.getRequestDispatcher("/restreint/article.jsp");
 		view.forward(request, response);
 			}
 		
