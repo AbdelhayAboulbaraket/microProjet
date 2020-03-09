@@ -26,11 +26,12 @@
  		<td>${item.article.prix}</td>
  		<td>${item.quantite}</td>
  		<td>
- 		<a href="SupprimerArticle?articleasupp=${item}">Supprimer </a>
- 		</td>
+ 		<a href="SupprimerArticle?articleasupp=${item.article.codeArticle}&quantite=${item.quantite}">Supprimer </a>
+ 		</td>		
 </tr>
 </c:forEach>
 </table>
+<a href="AfficherCommandes">Commander</a>
 </c:if>
 </body>
 </html>
