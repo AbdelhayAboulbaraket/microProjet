@@ -1,5 +1,8 @@
 package myBusinessLayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Client {
 	private int id;
 	private String email;
@@ -10,10 +13,12 @@ public class Client {
 	private String ville;
 	private String tel;
 	private String motDePasse;
+	private List<Panier> panier;
+	
 	
 	
 	public Client() {
-		
+		this.panier=new ArrayList<Panier>();
 	}
 	public Client(String email, String nom, String prenom, String adresse, String codePostal, String ville, String tel,
 			String motDePasse) {
@@ -26,6 +31,7 @@ public class Client {
 		this.ville = ville;
 		this.tel = tel;
 		this.motDePasse = motDePasse;
+		this.panier=new ArrayList<Panier>();
 	}
 	public Client(int id, String email, String nom, String prenom, String adresse, String codePostal, String ville,
 			String tel, String motDePasse) {
@@ -39,6 +45,22 @@ public class Client {
 		this.ville = ville;
 		this.tel = tel;
 		this.motDePasse = motDePasse;
+		this.panier=new ArrayList<Panier>();
+	}
+	
+	public void ajouterAuPanier(Panier input)
+	{
+		this.panier.add(input);
+	}
+	public void SupprimerDuPanier(Panier input)
+	{
+		this.panier.remove(input);
+	}
+	public List<Panier> getPanier() {
+		return panier;
+	}
+	public void setPanier(List<Panier> panier) {
+		this.panier = panier;
 	}
 	public int getId() {
 		return id;

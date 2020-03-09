@@ -1,8 +1,7 @@
 package myServlets;
 
 import java.io.IOException;
-import myBusinessLayer.Client;
-import myDAOs.ClientDAO;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import myBusinessLayer.Categorie;
+import myBusinessLayer.Client;
+import myDAOs.CategorieDAO;
+import myDAOs.ClientDAO;
 
 /**
  * Servlet implementation class ConfirmerConnexion
@@ -34,15 +39,22 @@ public class ConfirmerConnexion extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String email=request.getParameter("email");
-		String motdepasse=request.getParameter("motdepasse");
+		String motdepasse=(String)request.getParameter("motdepasse");
 		ClientDAO clientDao= new ClientDAO();	
 		Client client=clientDao.find(email);
+		HttpSession session=request.getSession();
+		CategorieDAO catDao=new CategorieDAO();
+
+		
 		
 		//System.out.println(motdepasse+" "+client.getMotDePasse());
 		
-		if(client != null ) 
+		if(client != null && motdepasse.matches(client.getMotDePasse())) 
 		{	
-			request.setAttribute("utilisateur",client);
+			List<String> taListe=catDao.selectAllCats();
+			session.setAttribute("taListe", taListe);
+			session.setAttribute("utilisateur",client);
+			
 			RequestDispatcher view=request.getRequestDispatcher("connexionReussite.jsp");
 			view.forward(request, response);
 		}

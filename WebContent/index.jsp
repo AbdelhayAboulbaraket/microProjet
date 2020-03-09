@@ -9,13 +9,9 @@
 <body>
 <h1>Bienvenue chez SEBO - Veuillez vous identifier ou vous inscrire</h1> <br>
 
-<form method="GET" action="InscriptionServlet">
- <button type="submit">S'inscrire.</button>
- </form> <br>
+<a href="inscription.jsp">S'inscrire</a> <br>
  
-<form method="GET" action="IdentificationServlet">
- <button type="submit">S'identifier.</button>
- </form>
+<a href="identification.jsp">S'identifier</a> <br>
  
  
 

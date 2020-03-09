@@ -37,7 +37,33 @@ public class ArticleDAO extends DAO<Article> {
 		}
 		return maListe;
 	}
-
+	
+	public List<Article> selectAllByCat(String categorie) {
+		List<Article> maListe=new ArrayList<Article>();
+		CategorieDAO catDao=new CategorieDAO();
+		int id=catDao.find(categorie).getRefCat();
+		try
+		{
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from Article WHERE categorie="+id+";");
+			while(result.next())
+			{
+				Article article=new Article(
+						result.getInt(1),
+						result.getString(2),
+						result.getDouble(3),
+						result.getInt(4),
+						catDao.find(result.getInt(5)), // a refaire
+						null // a refaire
+						);
+				maListe.add(article);
+			}
+			
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return maListe;
+	}
 	@Override
 	public boolean create(Article obj) {
 		

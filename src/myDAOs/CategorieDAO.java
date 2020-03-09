@@ -30,7 +30,26 @@ public class CategorieDAO extends DAO<Categorie> {
 		} catch(SQLException e)
 		{
 			e.printStackTrace();
-		}		return null;	}
+		}		
+		return maListe;	}
+	
+	public List<String> selectAllCats() {
+		// TODO Auto-generated method stub
+		List<String> maListe=new ArrayList<String>();
+		try
+		{
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select cat from Categorie;");
+			while(result.next())
+			{
+				
+				maListe.add(result.getString(1));
+			}
+			
+		} catch(SQLException e)
+		{
+			e.printStackTrace();
+		}		
+		return maListe;	}
 
 	@Override
 	public boolean create(Categorie obj) {
@@ -77,7 +96,30 @@ public class CategorieDAO extends DAO<Categorie> {
 			{
 						categorie=new Categorie(
 						result.getInt(1),
-						result.getString(3)
+						result.getString(2)
+						);	
+			}
+			
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return categorie;
+
+
+}
+	public Categorie find(String cat) {
+		// TODO Auto-generated method stub
+		Categorie categorie=new Categorie();
+		try
+		{
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from categorie where cat='"+ cat +"';" );
+			while(result.next())
+			{
+						categorie=new Categorie(
+						result.getInt(1),
+						result.getString(2)
 						);
 				
 			}

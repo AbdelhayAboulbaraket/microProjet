@@ -8,18 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import myBusinessLayer.Article;
+import myBusinessLayer.Client;
+import myBusinessLayer.Panier;
+import myDAOs.ArticleDAO;
 
 /**
- * Servlet implementation class IdentificationServlet
+ * Servlet implementation class SupprimerArticle
  */
-@WebServlet("/IdentificationServlet")
-public class IdentificationServlet extends HttpServlet {
+@WebServlet("/SupprimerArticle")
+public class SupprimerArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdentificationServlet() {
+    public SupprimerArticle() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +37,19 @@ public class IdentificationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		RequestDispatcher view=request.getRequestDispatcher("identification.jsp");
+		HttpSession session=request.getSession();
+		Panier articleaSupprimer=(Panier) request.getAttribute("articleasupp");
+		
+		Client utilisateur=(Client)session.getAttribute("utilisateur");
+		ArticleDAO articleDao=new ArticleDAO();
+		//Article article=articleDao.find(articleaSupprimer);
+		utilisateur.SupprimerDuPanier(articleaSupprimer);
+		session.setAttribute("utilisateur", utilisateur);
+		
+		RequestDispatcher view=request.getRequestDispatcher("voirPanier.jsp");
 		view.forward(request, response);
+		
+		
 	}
 
 	/**
