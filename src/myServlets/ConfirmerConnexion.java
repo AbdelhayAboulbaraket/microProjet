@@ -38,6 +38,16 @@ public class ConfirmerConnexion extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+	
+	}
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 		String email=request.getParameter("email");
 		String motdepasse=(String)request.getParameter("motdepasse");
 		ClientDAO clientDao= new ClientDAO();	
@@ -63,15 +73,6 @@ public class ConfirmerConnexion extends HttpServlet {
 			RequestDispatcher view=request.getRequestDispatcher("identification.jsp");
 			view.forward(request, response);
 		}
-	}
-	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

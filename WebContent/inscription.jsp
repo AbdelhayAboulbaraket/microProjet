@@ -10,7 +10,7 @@
 
 <h1> Inscrivez-vous</h1>
 
-<form action="ConfirmerInscription" method="GET">
+<form action="ConfirmerInscription" method="POST">
   <label for="nom">Nom:</label>
   <input type="text" id="nom" name="nom" ><br>
   <label for="prenom">Prenom:</label>

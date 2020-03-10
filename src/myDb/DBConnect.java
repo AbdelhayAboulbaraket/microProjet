@@ -44,10 +44,10 @@ public class DBConnect {
 				String sql="create database micro_projet;" + 
 						"use micro_projet;" + 
 						"create table client( id int(10) AUTO_INCREMENT, email  varchar(50), nom varchar(30), prenom varchar(30), adresse varchar(30),code_postal varchar(30),ville varchar(30),tel varchar(30),mot_de_passe varchar(100), primary key(id));" + 
-						"create table commande( num_commande int(10), id_client int(10),date_commande date, primary key(num_commande), foreign key(id_client) references client(id) );" +
+						"create table commande( num_commande int(10) AUTO_INCREMENT, id_client int(10),date_commande date, primary key(num_commande), foreign key(id_client) references client(id) );" +
 						"create table categorie(ref_cat int(10),cat varchar(30),primary key(ref_cat));" + 
 						"create table article(code_article int(10) AUTO_INCREMENT,designation varchar(100),prix float,stock int(10),categorie int(10),image BLOB,primary key(code_article),foreign key(categorie) references categorie(ref_cat));" +
-						"create table lignes_commande(num_commande int(10),code_article int(10),qte_cde int(10),foreign key(num_commande) references commande(num_commande),foreign key(code_article) references article(code_article),primary key(num_commande,code_article));";
+						"create table lignes_commande(num_commande int(10),code_article int(10),qte_cde int(10),foreign key(num_commande) references commande(num_commande),foreign key(code_article) references article(code_article));";
 				req.executeUpdate(sql);
 				System.out.println("DB crée");
 				

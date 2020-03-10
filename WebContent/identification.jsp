@@ -10,7 +10,7 @@
 
 <h1> Identifiez-vous</h1>
 
-<form action="ConfirmerConnexion" method="GET">
+<form action="ConfirmerConnexion" method="POST">
   <label for="email">Email:</label>
   <input type="text" id="email" name="email"><br>
   <label for="motdepasse">Password:</label>

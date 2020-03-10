@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import myBusinessLayer.Article;
-import myBusinessLayer.Commande;
+import myBusinessLayer.Achat;
 import myBusinessLayer.LignesCommande;
 
 public class LignesCommandeDAO extends DAO<LignesCommande> {
@@ -19,7 +18,7 @@ public class LignesCommandeDAO extends DAO<LignesCommande> {
 		ArticleDAO articleDao=new ArticleDAO();
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("select * from LignesCommande");
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("select * from Lignes_Commande");
 			while(result.next())
 			{
 				LignesCommande lignesCommande= new LignesCommande(commandeDao.find(result.getInt(1)),articleDao.find(result.getInt(2)),result.getInt("qte_cde"));
@@ -33,6 +32,8 @@ public class LignesCommandeDAO extends DAO<LignesCommande> {
 		}
 		return liste;
 	}
+	
+	
 
 	@Override
 	public boolean create(LignesCommande obj) {
@@ -41,7 +42,8 @@ public class LignesCommandeDAO extends DAO<LignesCommande> {
 		int article1=obj.getArticle().getCodeArticle();
 		int qtecde1=obj.getQteCde();
 		try {
-			 this.connect.getConn().createStatement().executeUpdate("insert into LignesCommande (commande,article,qteCde) values("+commande1+","+article1+","+qtecde1+");");
+			 this.connect.getConn().createStatement().executeUpdate("insert into Lignes_Commande(num_commande,code_article,qte_Cde) values("+commande1+","+article1+","+qtecde1+");");
+			 System.out.println("lignes commande dkhlat");
 		} catch (Exception e) {
 			
 			e.printStackTrace();

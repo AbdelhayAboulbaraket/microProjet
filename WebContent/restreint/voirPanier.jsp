@@ -19,7 +19,7 @@
     <th></th>
   </tr>
 
-<c:forEach var="item" items="${utilisateur2.panier}">
+<c:forEach var="item" items="${utilisateur.panier}">
 	<tr>
  		<tr><td>${item.article.codeArticle}</td>
  		<td>${item.article.designation}</td>

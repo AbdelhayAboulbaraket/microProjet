@@ -2,6 +2,7 @@ package myServlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +33,16 @@ public class ConfirmerInscription extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 		String email=request.getParameter("email");
 		String nom=request.getParameter("nom");
 		String prenom=request.getParameter("prenom");
@@ -45,16 +56,9 @@ public class ConfirmerInscription extends HttpServlet {
 				);
 		ClientDAO clientDao=new ClientDAO();
 		clientDao.create(utilisateur);
-		System.out.println("ça marche");
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		RequestDispatcher view=request.getRequestDispatcher("identification.jsp");
+		view.forward(request, response);
 	}
 
 }

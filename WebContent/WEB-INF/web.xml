@@ -16,7 +16,12 @@
   <filter-mapping>
     <filter-name>RestrictionFilter</filter-name>
     <url-pattern>/restreint/*</url-pattern>
-    <url-pattern>/myServlets/*</url-pattern>
-  </filter-mapping>
+    <url-pattern>/GenererTable</url-pattern>
+     <url-pattern>/VoirPanier</url-pattern>
+      <url-pattern>/GenererArticle</url-pattern>
+       <url-pattern>/AjouterAuPanier</url-pattern>
+        <url-pattern>/AfficherCommandes</url-pattern>
+        
+  </filter-mapping> 
   
 </web-app>

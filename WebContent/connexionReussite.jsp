@@ -12,7 +12,7 @@
 <body>
 
 <p style="display:inline;"> Bonjour mr ${sessionScope.utilisateur.nom} ${sessionScope.utilisateur.prenom} </p>
-<p style="display:inline; "align="right"><a href="voirPanier.jsp">Voir votre panier</a>.</p>
+<p style="display:inline; "align="right"><a href="VoirPanier">Voir votre panier</a>.</p>
 
 <a href="GenererTable"> Consulter catalogue.</a>
 

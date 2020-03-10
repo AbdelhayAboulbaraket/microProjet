@@ -14,11 +14,13 @@ public class Client {
 	private String tel;
 	private String motDePasse;
 	private List<Panier> panier;
+	private List<Achat> achats;
 	
 	
 	
 	public Client() {
 		this.panier=new ArrayList<Panier>();
+		this.achats=new ArrayList<Achat>();
 	}
 	public Client(String email, String nom, String prenom, String adresse, String codePostal, String ville, String tel,
 			String motDePasse) {
@@ -32,6 +34,8 @@ public class Client {
 		this.tel = tel;
 		this.motDePasse = motDePasse;
 		this.panier=new ArrayList<Panier>();
+		this.achats=new ArrayList<Achat>();
+		
 	}
 	public Client(int id, String email, String nom, String prenom, String adresse, String codePostal, String ville,
 			String tel, String motDePasse) {
@@ -46,8 +50,16 @@ public class Client {
 		this.tel = tel;
 		this.motDePasse = motDePasse;
 		this.panier=new ArrayList<Panier>();
+		this.achats=new ArrayList<Achat>();
+		
 	}
 	
+	public List<Achat> getAchats() {
+		return achats;
+	}
+	public void setAchats(List<Achat> achats) {
+		this.achats = achats;
+	}
 	public void ajouterAuPanier(Panier input)
 	{
 		this.panier.add(input);

@@ -39,9 +39,10 @@ public class CommandeDAO extends DAO<Commande> {
 
 		   String currentTime = sdf.format(obj.getDateCommande());
 		try
-		{	String sql="INSERT INTO COMMANDE VALUES("+ obj.getNumCommande()+","+obj.getClient().getId()+
+		{	String sql="INSERT INTO COMMANDE(id_client,date_commande) VALUES("+obj.getClient().getId()+
 			",'"+currentTime+"');";
 			this.connect.getConn().createStatement().executeUpdate(sql);
+			System.out.println("commande dkhlat");
 			return true;
 		}
 		catch(SQLException e)

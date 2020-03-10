@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import myBusinessLayer.Achat;
 import myBusinessLayer.Client;
 
 public class ClientDAO extends DAO<Client> {
@@ -30,6 +31,37 @@ public class ClientDAO extends DAO<Client> {
 			return liste;
 		
 		}
+	}
+	public List<Achat> selectAllbyClient(int id) {
+		List<Achat> liste =  new ArrayList<Achat>() ;
+		CommandeDAO commandeDao=new CommandeDAO();
+		ArticleDAO articleDao=new ArticleDAO();
+		try
+		{
+			ResultSet result=this.connect.getConn().createStatement().executeQuery(""
+					+ "select code_article,designation,prix,qte_cde,date_commande from Lignes_Commande, article, commande, clients"
+					+ "WHERE article.code_article=lignes_commande.code_article AND lignes_commande.num_commande=commande.num_commande"
+					+ "AND commande.code_client="+id+";");
+			
+			while(result.next())
+			{
+				Achat achat=new Achat(
+						result.getInt(1),
+						result.getString(2),
+						result.getDouble(3),
+						result.getInt(4),
+						result.getInt(4)*result.getDouble(3),
+						result.getDate(6)
+						);
+			liste.add(achat);
+			}
+			
+		}
+		catch(SQLException e )
+		{
+			e.printStackTrace();
+		}
+		return liste;
 	}
 
 	@Override
