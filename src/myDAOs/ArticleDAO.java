@@ -17,7 +17,7 @@ public class ArticleDAO extends DAO<Article> {
 		
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from Article;");
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM article;");
 			while(result.next())
 			{
 				Article article=new Article(
@@ -44,7 +44,7 @@ public class ArticleDAO extends DAO<Article> {
 		int id=catDao.find(categorie).getRefCat();
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from Article WHERE categorie="+id+";");
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM article WHERE categorie="+id+";");
 			while(result.next())
 			{
 				Article article=new Article(
@@ -68,7 +68,7 @@ public class ArticleDAO extends DAO<Article> {
 	public boolean create(Article obj) {
 		
 		try
-		{	String sql="INSERT INTO ARTICLE VALUES("+ obj.getCodeArticle()+",'"+obj.getDesignation()+
+		{	String sql="INSERT INTO article VALUES("+ obj.getCodeArticle()+",'"+obj.getDesignation()+
 			"',"+ obj.getPrix()+","+ obj.getStock()+","+ obj.getCategorie().getRefCat()+","+ obj.getImage()+");";
 			this.connect.getConn().createStatement().executeUpdate(sql);
 			return true;
@@ -108,7 +108,7 @@ public class ArticleDAO extends DAO<Article> {
 		
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from article where code_article="+ id+";" );
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM article WHERE code_article="+ id+";" );
 			while(result.next())
 			{
 						article=new Article(

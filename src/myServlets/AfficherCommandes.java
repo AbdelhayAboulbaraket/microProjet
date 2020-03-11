@@ -41,7 +41,7 @@ public class AfficherCommandes extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		/*HttpSession session=request.getSession();
+		HttpSession session=request.getSession();
 		Client utilisateur=(Client)session.getAttribute("utilisateur");
 		List<Panier> monPanier=utilisateur.getPanier();
 		
@@ -50,6 +50,7 @@ public class AfficherCommandes extends HttpServlet {
            Commande commande=new Commande(utilisateur,new Date());
            CommandeDAO commandeDao=new CommandeDAO();
            commandeDao.create(commande);
+           commande=commandeDao.findLastRow();
            LignesCommande ligneCommande=new LignesCommande(commande,monPanier.get(i).getArticle(),monPanier.get(i).getQuantite());
            LignesCommandeDAO lignesCommandeDao=new LignesCommandeDAO();
            lignesCommandeDao.create(ligneCommande);
@@ -59,7 +60,7 @@ public class AfficherCommandes extends HttpServlet {
 		session.setAttribute("utilisateur",utilisateur);
 		
 		RequestDispatcher view=request.getRequestDispatcher("/restreint/voirCommandes.jsp");
-		view.forward(request, response); */
+		view.forward(request, response); 
 		
 	}
 

@@ -17,7 +17,7 @@ public class CategorieDAO extends DAO<Categorie> {
 		List<Categorie> maListe=new ArrayList<Categorie>();
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from Categorie;");
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM categorie;");
 			while(result.next())
 			{
 				Categorie categorie=new Categorie(
@@ -38,7 +38,7 @@ public class CategorieDAO extends DAO<Categorie> {
 		List<String> maListe=new ArrayList<String>();
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select cat from Categorie;");
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT cat FROM categorie;");
 			while(result.next())
 			{
 				
@@ -55,7 +55,7 @@ public class CategorieDAO extends DAO<Categorie> {
 	public boolean create(Categorie obj) {
 		// TODO Auto-generated method stub
 		try
-		{	String sql="INSERT INTO CATEGORIE VALUES("+ obj.getRefCat()+",'"+ obj.getCategorie()+"');";
+		{	String sql="INSERT INTO categorie VALUES("+ obj.getRefCat()+",'"+ obj.getCategorie()+"');";
 			this.connect.getConn().createStatement().executeUpdate(sql);
 			return true;
 		}
@@ -91,7 +91,7 @@ public class CategorieDAO extends DAO<Categorie> {
 		Categorie categorie=new Categorie();
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from categorie where ref_cat="+ id+";" );
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM categorie WHERE ref_cat="+ id+";" );
 			while(result.next())
 			{
 						categorie=new Categorie(
@@ -114,7 +114,7 @@ public class CategorieDAO extends DAO<Categorie> {
 		Categorie categorie=new Categorie();
 		try
 		{
-			ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * from categorie where cat='"+ cat +"';" );
+			ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM categorie WHERE cat='"+ cat +"';" );
 			while(result.next())
 			{
 						categorie=new Categorie(

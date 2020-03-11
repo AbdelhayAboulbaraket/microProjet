@@ -8,16 +8,14 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
+<h1>Acces Interdit</h1> <br>
 
-<h1> Identifiez-vous</h1>
+<a href="inscription.jsp">S'inscrire</a> <br>
+ 
+<a href="identification.jsp">S'identifier</a> <br>
+ 
+ 
 
-<form action="ConfirmerConnexion" method="POST">
-  <label for="email">Email:</label>
-  <input type="text" id="email" name="email"><br>
-  <label for="motdepasse">Password:</label>
-  <input type="password" id="motdepsse" name="motdepasse">
-  <input type="submit" value="OK">
-</form> 
 
 </body>
 </html>

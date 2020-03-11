@@ -16,7 +16,7 @@ public class ClientDAO extends DAO<Client> {
 			List<Client> liste =  new ArrayList<Client>() ;
 			try
 			{
-				ResultSet result=this.connect.getConn().createStatement().executeQuery("select * from Client");
+				ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM client");
 				while(result.next())
 				{
 					Client client=new Client(result.getInt("id"),result.getString("email"),result.getString("nom"),result.getString("prenom"),result.getString("adresse"),result.getString("code_postal"),result.getString("ville"),result.getString("tel"),result.getString("mot_de_passe"));
@@ -39,9 +39,9 @@ public class ClientDAO extends DAO<Client> {
 		try
 		{
 			ResultSet result=this.connect.getConn().createStatement().executeQuery(""
-					+ "select code_article,designation,prix,qte_cde,date_commande from Lignes_Commande, article, commande, clients"
-					+ "WHERE article.code_article=lignes_commande.code_article AND lignes_commande.num_commande=commande.num_commande"
-					+ "AND commande.code_client="+id+";");
+					+ "SELECT a.code_article,a.designation,a.prix,l.qte_cde,c.date_commande FROM lignes_Commande l,article a,commande c"
+					+ "WHERE a.code_article=l.code_article AND l.num_commande=c.num_commande"
+					+ "AND c.code_client="+id+";");
 			
 			while(result.next())
 			{
@@ -51,7 +51,7 @@ public class ClientDAO extends DAO<Client> {
 						result.getDouble(3),
 						result.getInt(4),
 						result.getInt(4)*result.getDouble(3),
-						result.getDate(6)
+						result.getDate(5)
 						);
 			liste.add(achat);
 			}
@@ -76,7 +76,7 @@ public class ClientDAO extends DAO<Client> {
 		 String ville1=obj.getVille();
 		 String motdepasse1=obj.getMotDePasse();
 			try {
-				 this.connect.getConn().createStatement().executeUpdate("insert into Client(email,nom,prenom,adresse,code_postal,ville,tel,mot_de_passe) values('"+email1+"','"+nom1+"','"+prenom1+"','"+adresse1+"','"+codepostal1+"','"+ville1+"','"+tel1+"','"+motdepasse1+"');");
+				 this.connect.getConn().createStatement().executeUpdate("INSERT INTO client(email,nom,prenom,adresse,code_postal,ville,tel,mot_de_passe) VALUES('"+email1+"','"+nom1+"','"+prenom1+"','"+adresse1+"','"+codepostal1+"','"+ville1+"','"+tel1+"','"+motdepasse1+"');");
 		         
 			} catch (Exception e) {
 				
@@ -90,7 +90,7 @@ public class ClientDAO extends DAO<Client> {
 	@Override
 	public boolean delete(Client obj) {
 		int id2=obj.getId();
-		String sql= "DELETE FROM Client WHERE id_client="+id2+" ";
+		String sql= "DELETE FROM client WHERE id_client="+id2+" ";
 		try {
 			PreparedStatement p = this.connect.getConn().prepareStatement(sql);
             p.executeUpdate();
@@ -113,7 +113,7 @@ public class ClientDAO extends DAO<Client> {
 	public Client find(int id) {
 		   Client client=null;         
 		    try {
-		    	 ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * FROM Client WHERE id ="+ id +";");
+		    	 ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM client WHERE id ="+ id +";");
 		      if(result.first()){
 		      client = new Client (id, result.getString("email"), result.getString("nom"),result.getString("prenom"),result.getString("adresse"),result.getString("code_postal"), result.getString("ville"),result.getString("tel"),result.getString("mot_de_passe"));
 		       
@@ -128,7 +128,7 @@ public class ClientDAO extends DAO<Client> {
 	public Client find(String email) {
 		   Client client=null;         
 		    try {
-		    	 ResultSet result=this.connect.getConn().createStatement().executeQuery("Select * FROM Client WHERE email='"+ email +"';");
+		    	 ResultSet result=this.connect.getConn().createStatement().executeQuery("SELECT * FROM client WHERE email='"+ email +"';");
 		      if(result.first()){
 		      client = new Client (result.getInt(1), result.getString("email"), result.getString("nom"),result.getString("prenom"),result.getString("adresse"),result.getString("code_postal"), result.getString("ville"),result.getString("tel"),result.getString("mot_de_passe"));
 		       

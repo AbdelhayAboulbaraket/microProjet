@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 	public class RestrictionFilter implements Filter {
-    public static final String ACCES_PUBLIC     = "/identification.jsp";
+    public static final String ACCES_PUBLIC     = "/AccesInterdit.jsp";
     public static final String ATT_SESSION_USER = "utilisateur";
 
     public void init( FilterConfig config ) throws ServletException {
@@ -36,8 +36,8 @@ import javax.servlet.http.HttpSession;
         if ( session.getAttribute( ATT_SESSION_USER ) == null ) {
             /* Redirection vers la page publique */
         	System.out.println(" session null u khdam hadshi hada");
-        	request.getRequestDispatcher( ACCES_PUBLIC ).forward( request, response );
-        } else {
+        	response.sendRedirect( request.getContextPath() + ACCES_PUBLIC );
+        	} else {
             /* Affichage de la page restreinte */
         	System.out.println("filter daz mn hna");
             chain.doFilter( request, response );
