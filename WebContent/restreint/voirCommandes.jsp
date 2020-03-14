@@ -11,7 +11,7 @@
 </head>
 <body>
 <p style="display:inline;"> Bonjour mr ${sessionScope.utilisateur.nom} ${sessionScope.utilisateur.prenom} </p>
-<c:if test="${!empty utilisateur.panier}">
+<c:if test="${!empty utilisateur.achats}">
 <table class="table table-bordered">
   <tr>
     <th>Code Article</th>
@@ -27,7 +27,7 @@
  		<tr><td>${item.codeArticle}</td>
  		<td>${item.designation}</td>
  		<td>${item.prix}</td>
- 		<td>${item.quantite}</td>
+ 		<td>${item.qteCde}</td>
  		<td>${item.totale}</td>	
  		<td>${item.dateCommande}</td>		
 </tr>

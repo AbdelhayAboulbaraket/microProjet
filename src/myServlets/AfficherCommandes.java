@@ -55,6 +55,7 @@ public class AfficherCommandes extends HttpServlet {
            LignesCommandeDAO lignesCommandeDao=new LignesCommandeDAO();
            lignesCommandeDao.create(ligneCommande);
 		}
+		utilisateur.getPanier().clear();
 		ClientDAO clientDao=new ClientDAO();
 		utilisateur.setAchats(clientDao.selectAllbyClient(utilisateur.getId()));
 		session.setAttribute("utilisateur",utilisateur);

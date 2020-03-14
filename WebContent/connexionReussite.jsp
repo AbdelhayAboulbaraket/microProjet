@@ -12,10 +12,11 @@
 </head>
 <body>
 
-<p style="display:inline;"> Bonjour mr ${sessionScope.utilisateur.nom} ${sessionScope.utilisateur.prenom} </p>
-<p style="display:inline; "align="right"><a href="VoirPanier">Voir votre panier</a>.</p>
+<h1> Bonjour mr ${sessionScope.utilisateur.nom} ${sessionScope.utilisateur.prenom} </h1>
+<p><a href="GenererTable">Consulter catalogue.</a></p>
+<p><a href="VoirPanier">Consulter votre panier.</a>.</p>
+<p><a href="AfficherCommandes">Consulter vos commandes.</a>
 
-<a href="GenererTable"> Consulter catalogue.</a>
 
 </body>
 </html>
