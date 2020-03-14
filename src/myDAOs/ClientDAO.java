@@ -38,7 +38,7 @@ public class ClientDAO extends DAO<Client> {
 		try
 		{
 			ResultSet result=this.connect.getConn().createStatement().executeQuery(""
-					+ "SELECT a.code_article,a.designation,a.prix,l.qte_cde,c.date_commande FROM lignes_Commande l,article a,commande c WHERE a.code_article=l.code_article AND l.num_commande=c.num_commande AND c.id_client="+id+";");
+					+ "SELECT a.code_article,a.designation,a.prix,l.qte_cde,c.date_commande FROM lignes_commande l,article a,commande c WHERE a.code_article=l.code_article AND l.num_commande=c.num_commande AND c.id_client="+id+";");
 			
 			while(result.next())
 			{
